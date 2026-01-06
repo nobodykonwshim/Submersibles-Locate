@@ -8,5 +8,12 @@
   "smoothing_alpha": 0.35,
   "residual_ewma_alpha": 0.25,
   "default_quality": 1.0,
-  "depth_prior_default": [0.18, 0.17, 0.16, 0.15, 0.13, 0.11, 0.1]
+  "depth_prior_default": [0.18, 0.17, 0.16, 0.15, 0.13, 0.11, 0.1],
+  "chi2_3d_95": 7.814727903,
+  "ocean_grid_size": 60,
+  "ocean_domain_km": 30.0,
+  "ocean_density_base": 1025.0,
+  "ocean_density_variation": 3.0,
+  "current_max_kmh": 5.0,
+  "bathymetry_max_depth_m": 3200.0
 }
