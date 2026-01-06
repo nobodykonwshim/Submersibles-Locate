@@ -20,13 +20,15 @@ def generate_sample_data(config: dict, output_path: Path) -> None:
     rng = np.random.default_rng(config.get("seed", 42))
     n = 120
     t_hours = np.linspace(0, 48, n)
-    steps = rng.normal(loc=0.0, scale=0.08, size=(n, 2)).cumsum(axis=0)
-    base_traj = np.column_stack([0.5 * np.cos(t_hours / 10), 0.5 * np.sin(t_hours / 10)])
-    noise = rng.normal(scale=0.05, size=(n, 2))
-    data = base_traj + steps * 0.2 + noise
+    steps = rng.normal(loc=0.0, scale=0.06, size=(n, 2)).cumsum(axis=0)
+    slow_current = rng.normal(loc=0.0, scale=0.015, size=(n, 2)).cumsum(axis=0)
+    base_traj = np.column_stack([0.6 * np.cos(t_hours / 12), 0.6 * np.sin(t_hours / 12)])
+    noise = rng.normal(scale=0.04, size=(n, 2))
+    data = base_traj + steps * 0.25 + slow_current * 0.35 + noise
 
     q = np.clip(rng.normal(loc=0.85, scale=0.1, size=n), 0.5, 1.0)
-    depth_choices = rng.choice([20, 80, 150, 350, 600, 900, 1500], size=n)
+    depth_wave = 350 + 200 * np.sin(t_hours / 6) + rng.normal(scale=40, size=n)
+    depth_choices = np.clip(depth_wave, 30, 1800)
 
     df = pd.DataFrame(
         {
