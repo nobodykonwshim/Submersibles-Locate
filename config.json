@@ -1,0 +1,12 @@
+{
+  "seed": 42,
+  "chi2_2d_95": 5.9914645471,
+  "r95_min_km": 0.1,
+  "bbox_min_km": 2.0,
+  "bbox_multiplier_on_r95": 2.5,
+  "depth_bins_m": [0, 50, 100, 200, 400, 800, 1200, 2000],
+  "smoothing_alpha": 0.35,
+  "residual_ewma_alpha": 0.25,
+  "default_quality": 1.0,
+  "depth_prior_default": [0.18, 0.17, 0.16, 0.15, 0.13, 0.11, 0.1]
+}
